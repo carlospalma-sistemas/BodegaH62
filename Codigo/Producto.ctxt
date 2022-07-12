@@ -1,0 +1,25 @@
+#BlueJ class context
+comment0.target=Producto
+comment1.params=
+comment1.target=Producto()
+comment10.params=
+comment10.target=int\ getPrecio()
+comment11.params=
+comment11.target=int\ getCantidad()
+comment2.params=tipo\ nombre\ marca\ presentacion\ codigo\ precio\ cantidad
+comment2.target=Producto(java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ java.lang.String,\ int,\ int)
+comment3.params=precio
+comment3.target=void\ setPrecio(int)
+comment4.params=cantidad
+comment4.target=void\ setCantidad(int)
+comment5.params=
+comment5.target=java.lang.String\ getTipo()
+comment6.params=
+comment6.target=java.lang.String\ getNombre()
+comment7.params=
+comment7.target=java.lang.String\ getMarca()
+comment8.params=
+comment8.target=java.lang.String\ getPresentacion()
+comment9.params=
+comment9.target=java.lang.String\ getCodigo()
+numComments=12

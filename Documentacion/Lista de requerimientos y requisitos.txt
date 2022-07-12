@@ -1,0 +1,23 @@
+* REQUERIMIENTOS DEL USUARIO
+---------------------------
+- Como usuario, requiero ingresar la información de los productos que vendo en mi bodega para agregarlo y llevar un registro de datos adecuado. Dentro de la información requerida del producto se encuentra: tipo, precio, cantidad, codigo, presentación, nombre, marca.
+- Como usuario, necesito poder eliminar un producto de bodega para determinar que un producto no está más disponible para su venta o adquisición.
+- Como usuario, debo poder consultar la info de un producto existente en mi bodega, para ver su existencia y su estado de cantidad actual.
+- Como usuario, requiero modificar la info de precio y la cantidad, de acuerdo si ocurre una adquisición o una venta.
+
+PRODUCTO
+tipo          aseo                        alimento
+nombre        jabón líquido para loza     spaghetti 
+marca         Axión                       Doria
+presentación  botella x 500ml             bolsa x 250gr
+codigo        aleatoria                   
+precio        4000                        1500
+cantidad      15                          9
+
+
+* REQUISITOS DEL SISTEMA
+------------------------
+- La aplicación debe contar con un módulo de ingreso de productos en la aplicación. Se debe registrar la info de: tipo, precio, cantidad, codigo, presentación, nombre, marca.
+
+
+
