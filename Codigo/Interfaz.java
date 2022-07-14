@@ -19,6 +19,7 @@ public class Interfaz
             String menu = "MENU PRINCIPAL \n" +
                           "1. Ingresar producto nuevo \n" +
                           "2. Mostrar lista de productos \n" +
+                          "3. Buscar productos \n" +
                           "0. Salir";
             opcion = Integer.parseInt(JOptionPane.showInputDialog(null, menu, "Seleccione una opción", JOptionPane.QUESTION_MESSAGE));
             switch(opcion)
@@ -28,6 +29,9 @@ public class Interfaz
                     break;
                 case 2:
                     this.mostrarProductos();
+                    break;
+                case 3:
+                    this.buscarProductos();
                     break;
                 case 0:
                     JOptionPane.showMessageDialog(null, "Gracias", "Salir del programa", JOptionPane.INFORMATION_MESSAGE);
@@ -41,7 +45,8 @@ public class Interfaz
     
     public void ingresarProducto()
     {
-        String tipo = JOptionPane.showInputDialog(null, "Ingrese tipo de producto", "Producto nuevo", JOptionPane.QUESTION_MESSAGE);
+        String [] tipos = {"Aseo", "Alimento"};
+        int tipo = JOptionPane.showOptionDialog(null, "Ingrese tipo de producto", "Producto nuevo", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, tipos, tipos[0]);
         String nombre = JOptionPane.showInputDialog(null, "Ingrese nombre de producto", "Producto nuevo", JOptionPane.QUESTION_MESSAGE);
         String marca = JOptionPane.showInputDialog(null, "Ingrese marca de producto", "Producto nuevo", JOptionPane.QUESTION_MESSAGE);
         String presentacion = JOptionPane.showInputDialog(null, "Ingrese presentacion de producto", "Producto nuevo", JOptionPane.QUESTION_MESSAGE);
@@ -49,7 +54,7 @@ public class Interfaz
         int precio = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese precio del producto", "Producto nuevo", JOptionPane.QUESTION_MESSAGE));
         int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad del producto", "Producto nuevo", JOptionPane.QUESTION_MESSAGE));
         
-        Producto p = new Producto(tipo, nombre, marca, presentacion, codigo, precio, cantidad);
+        Producto p = new Producto(tipos[tipo], nombre, marca, presentacion, codigo, precio, cantidad);
         
         b.agregarProducto(p);
         JOptionPane.showMessageDialog(null, "Producto agregado con éxito:\n"+p.toString(), "Producto agregado", JOptionPane.INFORMATION_MESSAGE);
@@ -70,11 +75,25 @@ public class Interfaz
     
     public void mostrarProductos()
     {
+        String listado = "";
         List<Producto> lista = b.getListaProductos();
         for (Producto p: lista)
         {
-            JOptionPane.showMessageDialog(null, p.toString(), "Producto registrado", JOptionPane.INFORMATION_MESSAGE);
+            listado = listado + p.toString() + "\n";
         }
+        JOptionPane.showMessageDialog(null, listado, "Productos registrados", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void buscarProductos()
+    {
+        String busqueda = JOptionPane.showInputDialog(null, "Ingrese dato del producto a buscar (nombre, tipo, marca, present)", "Buscar producto", JOptionPane.QUESTION_MESSAGE);
+        List<Producto> lista = b.buscarProductos(busqueda);
+        String listado = "";
+        for (Producto p: lista)
+        {
+            listado = listado + p.toString() + "\n";
+        }
+        JOptionPane.showMessageDialog(null, listado, "Productos encontrados", JOptionPane.INFORMATION_MESSAGE);
     }
 }
 

@@ -10,4 +10,6 @@ comment4.params=
 comment4.target=java.lang.String\ generarCodigoAleatorio()
 comment5.params=
 comment5.target=void\ mostrarProductos()
-numComments=6
+comment6.params=
+comment6.target=void\ buscarProductos()
+numComments=7
