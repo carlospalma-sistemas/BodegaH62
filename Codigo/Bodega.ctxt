@@ -2,6 +2,8 @@
 comment0.target=Bodega
 comment1.params=
 comment1.target=Bodega()
+comment10.params=
+comment10.target=void\ actualizarArchivo()
 comment2.params=
 comment2.target=java.util.List\ getListaProductos()
 comment3.params=p
@@ -18,4 +20,4 @@ comment8.params=codigo\ cant
 comment8.target=void\ incrementarCantProducto(java.lang.String,\ int)
 comment9.params=codigo\ cant
 comment9.target=void\ disminuirCantProducto(java.lang.String,\ int)
-numComments=10
+numComments=11

@@ -7,8 +7,8 @@ public class Bodega
     
     public Bodega()
     {
-        ArchivoProductos a = new ArchivoProductos();
-        this.listaProductos = a.leerProductos();
+        ArchivoProductos archivo = new ArchivoProductos();
+        this.listaProductos = archivo.leerProductos();
     }
     
     public List<Producto> getListaProductos()
@@ -75,6 +75,7 @@ public class Bodega
             int cantActual = this.listaProductos.get(indexAModificar).getCantidad();
             this.listaProductos.get(indexAModificar).setCantidad(cantActual + cant);
         }
+        this.actualizarArchivo();
     }
 
     public void disminuirCantProducto(String codigo, int cant) 
@@ -89,7 +90,12 @@ public class Bodega
             }
         }
     }
-
+    
+    public void actualizarArchivo()
+    {
+        ArchivoProductos archivo = new ArchivoProductos();
+        archivo.guardarLista(this.listaProductos);
+    }
 }
 
 

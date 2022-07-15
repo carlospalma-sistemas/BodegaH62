@@ -77,7 +77,7 @@ public class Producto
 
     public String toString()
     {
-        return "Producto cod. "+this.codigo+": "+this.nombre+" Marca "+this.marca + " - "+this.presentacion;
+        return this.nombre+" "+this.marca + " - "+this.presentacion + " (" + this.tipo + ") Cant: " + this.cantidad;
     }
     
     public String toCSV()

@@ -11,16 +11,45 @@ public class Interfaz
         b = new Bodega();
     }
     
-    public void presentarMenu()
+    public void presentarMenuPrincipal()
+    {
+        int opcion = 0;
+        do
+        {
+            String menu = "MENU PRINCIPAL \n" +
+                          "1. Productos \n" +
+                          "2. Ventas \n" +
+                          "0. Salir";
+            opcion = Integer.parseInt(JOptionPane.showInputDialog(null, menu, "Seleccione una opción", JOptionPane.QUESTION_MESSAGE));
+            switch(opcion)
+            {
+                case 1:
+                    this.presentarMenuProductos();
+                    break;
+                case 2:
+                    this.generarVenta();
+                    break;
+                case 0:
+                    JOptionPane.showMessageDialog(null, "Gracias", "Salir del programa", JOptionPane.INFORMATION_MESSAGE);
+                    break;
+                default:
+                    JOptionPane.showMessageDialog(null, "Opción incorrecta", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        }
+        while(opcion != 0);
+    }
+    
+    public void presentarMenuProductos()
     {
         int opcion = 0;
         do 
         {
-            String menu = "MENU PRINCIPAL \n" +
+            String menu = "MENU PRODUCTOS \n" +
                           "1. Ingresar producto nuevo \n" +
                           "2. Mostrar lista de productos \n" +
                           "3. Buscar productos \n" +
-                          "0. Salir";
+                          "4. Surtir producto \n" +
+                          "0. Regresar al menú principal";
             opcion = Integer.parseInt(JOptionPane.showInputDialog(null, menu, "Seleccione una opción", JOptionPane.QUESTION_MESSAGE));
             switch(opcion)
             {
@@ -33,8 +62,10 @@ public class Interfaz
                 case 3:
                     this.buscarProductos();
                     break;
+                case 4:
+                    this.surtirProducto();
+                    break;
                 case 0:
-                    JOptionPane.showMessageDialog(null, "Gracias", "Salir del programa", JOptionPane.INFORMATION_MESSAGE);
                     break;
                 default:
                     JOptionPane.showMessageDialog(null, "Opción incorrecta", "Advertencia", JOptionPane.WARNING_MESSAGE);
@@ -84,25 +115,45 @@ public class Interfaz
         JOptionPane.showMessageDialog(null, listado, "Productos registrados", JOptionPane.INFORMATION_MESSAGE);
     }
     
-    public void buscarProductos()
+    public List<Producto> buscarProductos()
     {
         String busqueda = JOptionPane.showInputDialog(null, "Ingrese dato del producto a buscar (nombre, tipo, marca, present)", "Buscar producto", JOptionPane.QUESTION_MESSAGE);
         List<Producto> lista = b.buscarProductos(busqueda);
         String listado = "";
-        for (Producto p: lista)
+        for (int i=0; i<lista.size(); i++)
         {
-            listado = listado + p.toString() + "\n";
+            listado = listado + "Posición ["+(i+1)+"] "+ lista.get(i).toString() + "\n";
         }
         JOptionPane.showMessageDialog(null, listado, "Productos encontrados", JOptionPane.INFORMATION_MESSAGE);
+        return lista;
+    }
+    
+    public void surtirProducto()
+    {
+        List<Producto> lista = this.buscarProductos();
+        int posicion = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese posición del producto a surtir", "Surtir producto", JOptionPane.QUESTION_MESSAGE)) - 1;
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad del producto a surtir", "Surtir producto", JOptionPane.QUESTION_MESSAGE));
+        String codigo = lista.get(posicion).getCodigo();
+        b.incrementarCantProducto(codigo, cantidad);
+        JOptionPane.showMessageDialog(null, "Producto surtido exitosamente", "Producto surtido", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void generarVenta()
+    {
+        Venta v = new Venta();
+        List<Producto> lista = this.buscarProductos();
+        int posicion = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese posición del producto a vender", "Vender producto", JOptionPane.QUESTION_MESSAGE)) - 1;
+        int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad del producto a vender", "Vender producto", JOptionPane.QUESTION_MESSAGE));
+        Producto p = lista.get(posicion);
+        if (cantidad <= p.getCantidad()) {
+            v.agregarACarrito(p, cantidad);    
+        }
+        else 
+        {
+            JOptionPane.showMessageDialog(null, "Cantidad insuficiente", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
     }
 }
-
-
-
-
-
-
-
 
 
 

@@ -12,7 +12,7 @@ public class ArchivoProductos
     
     public ArchivoProductos()
     {
-        this.archivo = new File("listaproductos.txt");
+        this.archivo = new File("listaproductos.csv");
     }
     
     public void guardarProducto(String texto)
@@ -22,6 +22,29 @@ public class ArchivoProductos
             FileWriter writer = new FileWriter(this.archivo, true);  
             PrintWriter cursor = new PrintWriter(writer);
             cursor.println(texto);
+            cursor.flush();
+            cursor.close();
+            writer.close();
+        }
+        catch(Exception e)
+        {
+            
+        }
+    }
+    
+    public void guardarLista(List<Producto> lista)
+    {
+        String datoCompleto = "";
+        for (Producto p: lista)
+        {
+            datoCompleto = datoCompleto + p.toCSV() +"\n";
+        }
+        
+        try
+        {
+            FileWriter writer = new FileWriter(this.archivo, false);  
+            PrintWriter cursor = new PrintWriter(writer);
+            cursor.print(datoCompleto);
             cursor.flush();
             cursor.close();
             writer.close();
