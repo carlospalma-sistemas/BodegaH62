@@ -13,6 +13,8 @@ public class Bodega
     
     public List<Producto> getListaProductos()
     {
+        ArchivoProductos archivo = new ArchivoProductos();
+        this.listaProductos = archivo.leerProductos();
         return this.listaProductos;
     }
 
@@ -75,7 +77,6 @@ public class Bodega
             int cantActual = this.listaProductos.get(indexAModificar).getCantidad();
             this.listaProductos.get(indexAModificar).setCantidad(cantActual + cant);
         }
-        this.actualizarArchivo();
     }
 
     public void disminuirCantProducto(String codigo, int cant) 
