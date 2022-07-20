@@ -33,6 +33,5 @@ public class Venta
         {
             b.disminuirCantProducto(p.getCodigo(), p.getCantidad());
         }
-        b.actualizarArchivo();
     }
 }

@@ -135,9 +135,7 @@ public class Interfaz
         int cantidad = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese cantidad del producto a surtir", "Surtir producto", JOptionPane.QUESTION_MESSAGE));
         int precio = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese nuevo precio del producto a surtir", "Surtir producto", JOptionPane.QUESTION_MESSAGE));
         String codigo = lista.get(posicion).getCodigo();
-        b.incrementarCantProducto(codigo, cantidad);
-        b.modificarPrecio(codigo, precio);
-        b.actualizarArchivo();
+        b.surtirProducto(codigo, cantidad, precio);
         JOptionPane.showMessageDialog(null, "Producto surtido exitosamente", "Producto surtido", JOptionPane.INFORMATION_MESSAGE);
     }
     

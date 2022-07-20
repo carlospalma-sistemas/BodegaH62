@@ -1,0 +1,15 @@
+#BlueJ class context
+comment0.target=BaseDatos
+comment1.params=
+comment1.target=void\ crearConexion()
+comment2.params=
+comment2.target=void\ cerrarConexion()
+comment3.params=sql
+comment3.target=int\ insertar(java.lang.String)
+comment4.params=sql
+comment4.target=java.sql.ResultSet\ consultar(java.lang.String)
+comment5.params=sql
+comment5.target=int\ actualizar(java.lang.String)
+comment6.params=sql
+comment6.target=int\ borrar(java.lang.String)
+numComments=7
