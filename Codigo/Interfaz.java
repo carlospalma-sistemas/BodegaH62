@@ -49,6 +49,7 @@ public class Interfaz
                           "2. Mostrar lista de productos \n" +
                           "3. Buscar productos \n" +
                           "4. Surtir producto \n" +
+                          "5. Eliminar producto \n" +
                           "0. Regresar al menú principal";
             opcion = Integer.parseInt(JOptionPane.showInputDialog(null, menu, "Seleccione una opción", JOptionPane.QUESTION_MESSAGE));
             switch(opcion)
@@ -64,6 +65,9 @@ public class Interfaz
                     break;
                 case 4:
                     this.surtirProducto();
+                    break;
+                case 5:
+                    this.eliminarProducto();
                     break;
                 case 0:
                     break;
@@ -137,6 +141,20 @@ public class Interfaz
         String codigo = lista.get(posicion).getCodigo();
         b.surtirProducto(codigo, cantidad, precio);
         JOptionPane.showMessageDialog(null, "Producto surtido exitosamente", "Producto surtido", JOptionPane.INFORMATION_MESSAGE);
+    }
+    
+    public void eliminarProducto()
+    {
+        List<Producto> lista = this.buscarProductos();
+        int posicion = Integer.parseInt(JOptionPane.showInputDialog(null, "Ingrese posición del producto a eliminar", "Eliminar producto", JOptionPane.QUESTION_MESSAGE)) - 1;
+        String codigo = lista.get(posicion).getCodigo();
+        Producto p = b.buscarProducto(codigo);
+        int opcion = JOptionPane.showConfirmDialog(null, "Desea eliminar el producto "+p.getNombre()+" "+p.getMarca()+"?", "Vender producto", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+        if (opcion == JOptionPane.YES_OPTION)
+        {
+            b.eliminarProducto(codigo);
+            JOptionPane.showMessageDialog(null, "Producto eliminado exitosamente", "Producto eliminado", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     
     public void generarVenta()

@@ -86,6 +86,37 @@ public class Bodega
         return listaEncontrados;
     }
     
+    public Producto buscarProducto(String codigoBuscar)
+    {
+        Producto p = null;
+        BaseDatos bd = new BaseDatos();
+        bd.crearConexion();
+        String sql = "SELECT codigo, nombre, marca, presentacion, tipo, precio, cantidad "+
+                     "FROM TProducto "+
+                     "WHERE codigo = \""+codigoBuscar+"\" ";
+        ResultSet rs = bd.consultar(sql);
+        try
+        {
+            while(rs.next())
+            {
+                String codigo = rs.getString(1);
+                String nombre = rs.getString(2);
+                String marca = rs.getString(3);
+                String presentacion = rs.getString(4);
+                String tipo = rs.getString(5);
+                int precio = rs.getInt(6);
+                int cantidad = rs.getInt(7);
+                p = new Producto(tipo, nombre, marca, presentacion, codigo, precio, cantidad);
+            }
+        }
+        catch(Exception e)
+        {
+            return null;
+        }
+        bd.cerrarConexion();
+        return p;
+    }
+    
     public void eliminarProducto(String codigo) 
     {
         BaseDatos bd = new BaseDatos();

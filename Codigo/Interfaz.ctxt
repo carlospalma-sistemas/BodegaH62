@@ -2,6 +2,8 @@
 comment0.target=Interfaz
 comment1.params=
 comment1.target=Interfaz()
+comment10.params=
+comment10.target=void\ generarVenta()
 comment2.params=
 comment2.target=void\ presentarMenuPrincipal()
 comment3.params=
@@ -17,5 +19,5 @@ comment7.target=java.util.List\ buscarProductos()
 comment8.params=
 comment8.target=void\ surtirProducto()
 comment9.params=
-comment9.target=void\ generarVenta()
-numComments=10
+comment9.target=void\ eliminarProducto()
+numComments=11
