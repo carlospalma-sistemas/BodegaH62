@@ -2,4 +2,12 @@
 comment0.target=GUI
 comment1.params=
 comment1.target=GUI()
-numComments=2
+comment2.params=
+comment2.target=void\ vincularListeners()
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=
+comment4.target=void\ cargarProductos()
+comment5.params=
+comment5.target=void\ cargarProductosFiltrados()
+numComments=6
