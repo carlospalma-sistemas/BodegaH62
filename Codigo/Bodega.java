@@ -133,7 +133,7 @@ public class Bodega
         BaseDatos bd = new BaseDatos();
         bd.crearConexion();
         String sql = "UPDATE TProducto "+
-                     "SET cantidad = cantidad + "+cant+", precio = "+precio+" "+
+                     "SET cantidad = "+cant+", precio = "+precio+" "+
                      "WHERE codigo = \""+codigo+"\"";
         bd.actualizar(sql);
         bd.cerrarConexion();

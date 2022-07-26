@@ -1,7 +1,7 @@
 #BlueJ class context
 comment0.target=BaseDatos
 comment1.params=
-comment1.target=void\ crearConexion()
+comment1.target=boolean\ crearConexion()
 comment2.params=
 comment2.target=void\ cerrarConexion()
 comment3.params=sql

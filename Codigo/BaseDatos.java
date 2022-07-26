@@ -10,17 +10,18 @@ public class BaseDatos
     private Connection conexion;
     private Statement ejecutor;
     
-    public void crearConexion()
+    public boolean crearConexion()
     {
         try
         {
             conexion = DriverManager.getConnection(conectorInstalado + rutaBaseDatos);
             ejecutor = conexion.createStatement();
             ejecutor.setQueryTimeout(30);
+            return true;
         }
         catch (Exception e)
         {
-            
+            return false;
         }
     }
     
